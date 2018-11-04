@@ -132,7 +132,8 @@ def visualize(hightlighted=200):
     ts = turtle.getscreen()
     ts.getcanvas().postscript(file=os.path.join(BASE, 'plan.eps'))
     im = Image.open(os.path.join(BASE, 'plan.eps'))
-    im.save(os.path.join(BASE, 'plan.jpeg'), "JPEG")
+    im.show()
+    #im.save(os.path.join(BASE, 'plan.jpeg'), "JPEG")
     #ts = turtle.getscreen().getcanvas()
     #canvasvg.saveall(os.path.join(BASE, 'plan.svg'), ts)
 
