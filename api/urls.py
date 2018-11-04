@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),    # http://127.0.0.1:8000/api/
-    #path('init', views.init, name='init'),  # http://127.0.0.1:8000/api/init
+    path('init', views.init, name='init'),  # http://127.0.0.1:8000/api/init
     
     path('user/pref', views.pref, name='pref'), # http://127.0.0.1:8000/api/user/pref
     path('user/_pref', views._pref, name='_pref'),
