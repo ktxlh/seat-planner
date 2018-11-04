@@ -6,6 +6,9 @@ from sklearn.manifold import TSNE
 import turtle
 import random
 
+from PIL import Image
+
+
 def readkvp():
     data = {}
     ks = []
@@ -128,23 +131,27 @@ def visualize(hightlighted=200):
     turtle.hideturtle()
     ts = turtle.getscreen()
     ts.getcanvas().postscript(file=os.path.join(BASE, 'plan.eps'))
+    im = Image.open(os.path.join(BASE, 'plan.eps'))
+    im.save(os.path.join(BASE, 'plan.jpeg'), "JPEG")
+    #ts = turtle.getscreen().getcanvas()
+    #canvasvg.saveall(os.path.join(BASE, 'plan.svg'), ts)
 
-
+    #return 0
     # return he's data, color, as well as his neighbor's
     # or visualize it and return the result?
-    ret = [
+    ret = json.dumps([
         {
             'Name': name_to_highlight,
             'Preferences':{
-                'Window':vs[hightlighted][0],
-                'Sleep':vs[hightlighted][1],
-                'Networking':vs[hightlighted][2],
-                'WindowShading':vs[hightlighted][3],
+                'Window':vs[hightlighted-1][0],
+                'Sleep':vs[hightlighted-1][1],
+                'Networking':vs[hightlighted-1][2],
+                'WindowShading':vs[hightlighted-1][3],
             },
             'Color': {
-                'R':colors[hightlighted][0],
-                'G':colors[hightlighted][1],
-                'B':colors[hightlighted][2],
+                'R':colors[hightlighted-1][0],
+                'G':colors[hightlighted-1][1],
+                'B':colors[hightlighted-1][2],
             }
         },
         {
@@ -161,7 +168,7 @@ def visualize(hightlighted=200):
                 'B':colors[name2id[highlight_neighbor]][2],
             }
         }
-    ]
+    ])
     return ret
 
 #if __name__ == '__main__':

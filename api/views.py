@@ -9,8 +9,11 @@ from . import add_random_passenger
 from .backend.seating_plan import get_seat_plan
 from . import similarity
 
+import canvasvg
+
 def index(request):
-    return HttpResponse("Hello, world. You're at the api index.")
+    #return HttpResponse("Hello, world. You're at the api index.")
+    return render(request, 'index.html')
 
 
 
@@ -32,7 +35,9 @@ def init(request):
 #######################################################################################
 
 def pref(request):
+    return render(request, 'pref.html', context={'Key':'Value'})
 
+def _pref(request):
     DEFAULT_WEIGHT = {1:1, 2:0}
     NOT_SET = 0
 
@@ -65,9 +70,7 @@ def pref(request):
         with open(os.path.join(BASE, 'data.json'), 'w') as out_f:
             json.dump(data, out_f, sort_keys=True, indent=4)
 
-    return render(request, 'pref.html', context={'Key':'Value'})
-    #return HttpResponse("ok")
-
+    return render(request, 'pref_after.html')
 
 
 #######################################################################################
@@ -78,12 +81,15 @@ def pref(request):
 
 
 def feedback(request):
-    return HttpResponse("ok")
+    return render(request, 'feedback.html')
+
+def _feedback(request):
+    return render(request, 'feedback_after.html')
 
 
 #######################################################################################
 #
-#    Final Seating
+#    Final Seating (raw .json)
 #
 #######################################################################################
 
@@ -114,7 +120,8 @@ def random199(request):
         add_random_passenger.add_random_passenger(passenger)
     with open(os.path.join(BASE, 'data.json'), 'w') as out_f:
             json.dump(passenger, out_f, sort_keys=True, indent=4)
-    return HttpResponse(passenger)
+    #return HttpResponse(passenger)
+    return render(request, 'index.html')
     
 
 def result(request):
