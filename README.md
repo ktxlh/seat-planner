@@ -9,3 +9,6 @@ for pref:
     ‘Sleep’: Sleep, rest (need quiet)        # Sleep Very Much = 2 <-----> Sleep Very Less = -2     
     ‘Networking’: willing to networking       # Very Willing = 2 <-----> Very Unwilling = -2     
     ‘WindowShading’:           # Very Willing to Open = 2 <----> Very Unwilling to Open = -2     
+       
+        
+The format of the feedback does not matter as we use generated feedback for the learning models for now.
