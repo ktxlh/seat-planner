@@ -1,4 +1,6 @@
 # seat-planner
+Airline seatings according to special needs and hobbies
+
 # seat-planner
 dummy htmls are in api/templates for reference
 
